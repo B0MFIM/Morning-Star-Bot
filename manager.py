@@ -11,15 +11,14 @@ class Manager(commands.Cog):
     
     @commands.Cog.listener()
     async def on_ready(self):
-        ready = "Connect"
-        console.info(ready)
+        console.info("Connect")
 
     @commands.Cog.listener()
     async def on_command_error(self, ctx, error):
         if isinstance(error, MissingRequiredArgument):
-            await ctx.send("Favor enviar todos os argumentos. Digite '@help' para ver os parâmetros de cada comando.")
+            await ctx.send("Favor enviar todos os argumentos. Digite '!help' para ver os parâmetros de cada comando.")
         elif isinstance(error, CommandNotFound):
-            await ctx.send("O comando não existe. Digite '@help' para ver os comandos existêntes.")
+            await ctx.send("O comando não existe. Digite '!help' para ver os comandos existêntes.")
         else:
             raise error
 

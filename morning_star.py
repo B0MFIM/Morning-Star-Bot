@@ -1,8 +1,11 @@
-#import os
+import discord
+import os
 from decouple import config
 from discord.ext import commands
 
-bot = commands.Bot("@")
+intents = discord.Intents.all()
+
+bot = commands.Bot(command_prefix="!", intents=intents)
 
 def load_cogs(bot):
     bot.load_extension("manager")
@@ -12,6 +15,7 @@ def load_cogs(bot):
         if file.endswith(".py"):
             cog = file[:-3]
             bot.load_extension(f"Commands.{cog}")
+
     
     for file in os.listdir("Tasks"):
         if file.endswith(".py"):
